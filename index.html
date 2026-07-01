@@ -149,16 +149,13 @@
   .hamburger span{width:22px;height:2px;background:var(--ink);transition:all .25s ease;}
 
   /* ---------- Hero ---------- */
-    .hero{
+  .hero{
     padding:150px 0 100px;
-  }
-  .hero-layout{
     display:grid;
     grid-template-columns:1.05fr 0.95fr;
     gap:56px;
     align-items:center;
   }
-
   .hero h1{
     font-size:clamp(34px,5vw,54px);
     line-height:1.1;
@@ -440,8 +437,7 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width:920px){
-    .hero{padding-top:130px; padding-bottom:72px;}
-    .hero-layout{grid-template-columns:1fr
+    .hero{grid-template-columns:1fr;padding-top:130px;}
     .skills-grid, .portfolio-grid, .edu-grid, .contact-grid, .about-grid{grid-template-columns:1fr;}
     .about-grid .photo-frame{max-width:280px;margin:0 auto;}
     .nav-links{display:none;}
