@@ -533,14 +533,16 @@
         <span class="term-path">~/htet/profile.jpg</span>
       </div>
       <div class="photo-inner">
-        <img src="Image.png" alt="Htet Pyie Phyo Htut" class="photo-img"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="photo-placeholder">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5b6b80" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
-          <span>Replace <code>your-photo.jpg</code><br>with your headshot</span>
-        </div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
+  <img src="Image.png" alt="Htet Pyie Phyo Htut" class="photo-img"
+       onload="this.nextElementSibling.style.display='none';"
+       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+  <div class="photo-placeholder">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5b6b80" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+    <span>Replace <code>your-photo.jpg</code><br>with your headshot</span>
+  </div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+</div>
+
       <div class="photo-tag"><span class="pulse-dot"></span> ID: HTET.PPH — DUBAI, UAE</div>
     </div>
 
