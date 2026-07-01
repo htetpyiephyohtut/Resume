@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Htet Pyie Phyo Htut — IT Support Engineer &amp; Frontend Developer</title>
+<meta name="description" content="Htet Pyie Phyo Htut — IT Support Engineer / Systems Administrator and Frontend Developer based in Dubai, UAE. 3.7+ years maintaining zero-downtime environments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0A0E14;
+    --panel:#111823;
+    --panel-2:#151d2b;
+    --line:#22303f;
+    --cyan:#22D3EE;
+    --teal:#0F766E;
+    --signal:#34D399;
+    --fog:#94A3B8;
+    --fog-dim:#5b6b80;
+    --ink:#F1F5F9;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --maxw:1160px;
+    --radius:14px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(ellipse 900px 600px at 15% -5%, rgba(34,211,238,0.09), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(15,118,110,0.14), transparent 60%),
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:auto, auto, 42px 42px, 42px 42px;
+    pointer-events:none;
+    z-index:0;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+  section{position:relative;z-index:1;}
+
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--cyan);
+    letter-spacing:0.02em;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;background:var(--cyan);border-radius:1px;transform:rotate(45deg);}
+
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,4vw,38px);margin-bottom:14px;}
+  .section-head p{color:var(--fog);font-size:16px;}
+
+  /* ---------- Terminal card chrome ---------- */
+  .term-card{
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:12px 16px;
+    background:rgba(255,255,255,0.02);
+    border-bottom:1px solid var(--line);
+  }
+  .term-dot{width:9px;height:9px;border-radius:50%;background:var(--fog-dim);}
+  .term-dot:nth-child(1){background:#ef4665;}
+  .term-dot:nth-child(2){background:#f5b942;}
+  .term-dot:nth-child(3){background:var(--signal);}
+  .term-path{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--fog);
+    margin-left:8px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,14,20,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:var(--maxw);margin:0 auto;padding:0 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-mono);font-size:15px;font-weight:500;
+  }
+  .logo-badge{
+    width:32px;height:32px;border-radius:8px;
+    background:linear-gradient(135deg, var(--cyan), var(--teal));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--void);font-weight:700;font-size:13px;
+  }
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{
+    font-size:14.5px;color:var(--fog);
+    transition:color .2s ease;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .cta-btn{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    padding:10px 18px;
+    border-radius:8px;
+    background:var(--cyan);
+    color:var(--void);
+    font-weight:600;
+    border:1px solid var(--cyan);
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(34,211,238,0.25);}
+  .cta-ghost{
+    background:transparent;color:var(--ink);border:1px solid var(--line);
+  }
+  .cta-ghost:hover{border-color:var(--cyan);box-shadow:none;color:var(--cyan);}
+
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+  .hamburger span{width:22px;height:2px;background:var(--ink);transition:all .25s ease;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:150px 0 100px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(34px,5vw,54px);
+    line-height:1.1;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(90deg, var(--cyan), var(--signal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.sub{
+    color:var(--fog);font-size:17px;max-width:520px;margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+  .btn-lg{padding:14px 26px;border-radius:10px;font-size:14.5px;}
+
+  .stat-strip{display:flex;gap:36px;flex-wrap:wrap;}
+  .stat{}
+  .stat .num{
+    font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--ink);
+    display:block;
+  }
+  .stat .num span{color:var(--cyan);}
+  .stat .lbl{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--fog-dim);
+    letter-spacing:0.03em;text-transform:uppercase;
+  }
+
+  /* terminal panel in hero */
+  .monitor{min-height:340px;display:flex;flex-direction:column;}
+  .monitor .term-body{
+    padding:22px 20px;
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    color:var(--fog);
+    flex:1;
+  }
+  .monitor .term-body .line{
+    margin-bottom:10px;
+    opacity:0;
+    white-space:pre-wrap;
+  }
+  .monitor .term-body .line.show{
+    opacity:1;
+    animation:fadeIn .35s ease forwards;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(2px);}to{opacity:1;transform:translateY(0);}}
+  .ok{color:var(--signal);}
+  .tag-y{color:#f5b942;}
+  .dim{color:var(--fog-dim);}
+  .cursor-blink{
+    display:inline-block;width:7px;height:14px;background:var(--cyan);
+    animation:blink 1s steps(1) infinite;vertical-align:text-bottom;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- About / Photo frame ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  .photo-frame{overflow:visible;}
+  .photo-inner{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    background:var(--panel-2);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .photo-img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .photo-placeholder{
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+    text-align:center;padding:20px;
+    font-family:var(--font-mono);font-size:11.5px;color:var(--fog-dim);
+    line-height:1.7;
+  }
+  .photo-placeholder code{
+    color:var(--cyan);background:rgba(34,211,238,0.08);
+    padding:1px 5px;border-radius:4px;
+  }
+  .corner{
+    position:absolute;width:18px;height:18px;
+    border:2px solid var(--cyan);
+    opacity:0.85;
+  }
+  .corner.tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+  .corner.tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+  .corner.bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+  .corner.br{bottom:10px;right:10px;border-left:none;border-top:none;}
+  .photo-tag{
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:11px;color:var(--fog);
+    padding:12px 16px;border-top:1px solid var(--line);
+  }
+  .about-copy p{color:var(--fog);font-size:16px;max-width:640px;}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .skill-panel{padding:26px 26px 30px;}
+  .skill-panel h3{
+    font-size:16px;color:var(--ink);margin-bottom:4px;
+  }
+  .skill-panel .sub-lbl{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--fog-dim);
+    margin-bottom:20px;display:block;
+  }
+  .skill-list{display:flex;flex-direction:column;gap:12px;}
+  .skill-list li{
+    display:flex;align-items:center;gap:10px;
+    font-size:14.5px;color:var(--fog);
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--line);
+  }
+  .skill-list li:last-child{border-bottom:none;padding-bottom:0;}
+  .skill-list .ico{
+    font-family:var(--font-mono);color:var(--cyan);font-size:12px;
+    width:20px;flex-shrink:0;
+  }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .proj-card{display:flex;flex-direction:column;}
+  .proj-thumb{
+    height:190px;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .proj-thumb.dental{background:linear-gradient(135deg, #0d3b3a, #0a1f2b 60%);}
+  .proj-thumb.tech{background:linear-gradient(135deg, #1b1440, #0a1220 60%);}
+  .proj-thumb::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+  .proj-glyph{
+    font-family:var(--font-mono);font-size:13px;color:rgba(255,255,255,0.55);
+    z-index:1;letter-spacing:0.04em;
+  }
+  .proj-body{padding:22px 24px 26px;flex:1;display:flex;flex-direction:column;}
+  .proj-body h3{font-size:19px;margin-bottom:8px;}
+  .proj-body p{color:var(--fog);font-size:14.5px;margin-bottom:16px;flex:1;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--cyan);
+    background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.2);
+    padding:4px 9px;border-radius:5px;
+  }
+  .proj-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:13px;font-weight:500;
+    color:var(--ink);
+    padding:10px 0;
+    width:fit-content;
+    border-bottom:1px solid var(--line);
+    transition:border-color .2s ease, color .2s ease, gap .2s ease;
+  }
+  .proj-link:hover{color:var(--cyan);border-color:var(--cyan);gap:12px;}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{
+    content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;
+    background:linear-gradient(var(--cyan), var(--line) 90%);
+  }
+  .t-item{position:relative;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";position:absolute;left:-32px;top:4px;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--void);border:2px solid var(--cyan);
+  }
+  .t-date{
+    font-family:var(--font-mono);font-size:12px;color:var(--cyan);
+    margin-bottom:6px;display:block;
+  }
+  .t-item h3{font-size:18px;margin-bottom:3px;}
+  .t-org{color:var(--fog);font-size:13.5px;margin-bottom:14px;display:block;}
+  .t-item ul{display:flex;flex-direction:column;gap:8px;}
+  .t-item ul li{
+    font-size:14.5px;color:var(--fog);padding-left:18px;position:relative;
+  }
+  .t-item ul li::before{
+    content:"›";position:absolute;left:0;color:var(--signal);font-family:var(--font-mono);
+  }
+
+  /* ---------- Education ---------- */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .edu-card{padding:24px 26px;}
+  .edu-card .edu-tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--signal);
+    display:block;margin-bottom:10px;
+  }
+  .edu-card h3{font-size:16.5px;margin-bottom:6px;}
+  .edu-card p{color:var(--fog);font-size:14px;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;}
+  .contact-info h2{font-size:clamp(26px,4vw,34px);margin-bottom:16px;}
+  .contact-info p{color:var(--fog);margin-bottom:28px;max-width:420px;}
+  .contact-list{display:flex;flex-direction:column;gap:16px;margin-bottom:28px;}
+  .contact-list a, .contact-list div{
+    display:flex;align-items:center;gap:12px;
+    font-size:15px;color:var(--ink);
+  }
+  .contact-list a{transition:color .2s ease;}
+  .contact-list a:hover{color:var(--cyan);}
+  .c-ico{
+    width:36px;height:36px;border-radius:9px;
+    background:var(--panel-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .social-row{display:flex;gap:12px;}
+  .social-row a{
+    width:40px;height:40px;border-radius:9px;
+    background:var(--panel-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .social-row a:hover{border-color:var(--cyan);transform:translateY(-2px);}
+
+  form{padding:28px;}
+  .form-row{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+  .form-row label{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--fog-dim);text-transform:uppercase;letter-spacing:0.03em;
+  }
+  .form-row input, .form-row textarea{
+    background:var(--void);border:1px solid var(--line);border-radius:8px;
+    padding:12px 14px;color:var(--ink);font-family:var(--font-body);font-size:14.5px;
+    outline:none;transition:border-color .2s ease;
+  }
+  .form-row input:focus, .form-row textarea:focus{border-color:var(--cyan);}
+  .form-row textarea{resize:vertical;min-height:100px;}
+  .submit-btn{width:100%;padding:13px;border:none;font-family:var(--font-mono);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:34px 0;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  footer p{color:var(--fog-dim);font-size:13px;}
+  .status-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:12px;color:var(--signal);
+    padding:7px 12px;border:1px solid var(--line);border-radius:20px;
+  }
+  .pulse-dot{
+    width:7px;height:7px;border-radius:50%;background:var(--signal);
+    box-shadow:0 0 0 0 rgba(52,211,153,0.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(52,211,153,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(52,211,153,0);}
+    100%{box-shadow:0 0 0 0 rgba(52,211,153,0);}
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:90;
+    width:56px;height:56px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(37,211,102,0.35);
+    transition:transform .2s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  section{padding:100px 0;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr;padding-top:130px;}
+    .skills-grid, .portfolio-grid, .edu-grid, .contact-grid, .about-grid{grid-template-columns:1fr;}
+    .about-grid .photo-frame{max-width:280px;margin:0 auto;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    section{padding:72px 0;}
+  }
+  @media (max-width:920px){
+    .nav-links.mobile-open{
+      display:flex;position:fixed;top:68px;left:0;right:0;
+      background:rgba(10,14,20,0.98);backdrop-filter:blur(14px);
+      flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--line);
+    }
+  }
+  @media (max-width:520px){
+    .stat-strip{gap:24px;}
+    .hero-ctas{flex-direction:column;}
+    .hero-ctas .btn-lg{width:100%;text-align:center;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#home" class="logo">
+      <span class="logo-badge">HP</span>
+      Htet Pyie Phyo Htut
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="cta-btn">Hire Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="home" class="hero wrap">
+  <div>
+    <span class="eyebrow">~/whoami — Dubai, UAE</span>
+    <h1>Securing IT infrastructure.<br>Building <span class="accent">seamless</span> digital experiences.</h1>
+    <p class="sub">IT Support Engineer &amp; Systems Administrator with 3.7+ years keeping critical environments at zero downtime — now channeling that same precision into modern, responsive frontend development. Available for immediate joining in Dubai.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="cta-btn btn-lg">View My Work</a>
+      <a href="#contact" class="cta-btn cta-ghost btn-lg">Contact Me</a>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><span class="num"><span>3.7+</span></span><span class="lbl">Years Experience</span></div>
+      <div class="stat"><span class="num"><span>0</span></span><span class="lbl">Downtime Incidents</span></div>
+      <div class="stat"><span class="num"><span>50+</span></span><span class="lbl">Workstations Managed</span></div>
+    </div>
+  </div>
+
+  <div class="term-card monitor reveal">
+    <div class="term-bar">
+      <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+      <span class="term-path">~/htet/system-status</span>
+    </div>
+    <div class="term-body" id="monitorBody">
+      <div class="line"><span class="dim">$</span> run diagnostics --full</div>
+      <div class="line"><span class="ok">[OK]</span> Active Directory &amp; Group Policy ......... stable</div>
+      <div class="line"><span class="ok">[OK]</span> TCP/IP &amp; DNS resolution ................ nominal</div>
+      <div class="line"><span class="ok">[OK]</span> 50+ workstations ....................... online</div>
+      <div class="line"><span class="ok">[OK]</span> Exam-centre environment ................ zero-downtime</div>
+      <div class="line"><span class="tag-y">[BUILD]</span> frontend deploy .................... success</div>
+      <div class="line"><span class="dim">$</span> status: <span class="ok">ready for immediate joining</span> <span class="cursor-blink"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">~/about</span>
+    <h2>Two disciplines, one standard: reliability.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="photo-frame reveal">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-path">~/htet/profile.jpg</span>
+      </div>
+      <div class="photo-inner">
+        <img src="your-photo.jpg" alt="Htet Pyie Phyo Htut" class="photo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5b6b80" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+          <span>Replace <code>your-photo.jpg</code><br>with your headshot</span>
+        </div>
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
+      <div class="photo-tag"><span class="pulse-dot"></span> ID: HTET.PPH — DUBAI, UAE</div>
+    </div>
+
+    <div class="about-copy reveal">
+      <p>Most of my career has been spent where systems can't afford to fail — administering exam-centre infrastructure under strict international compliance. Somewhere along the way, that same discipline pulled me into frontend development: same attention to detail, same obsession with things simply working.</p>
+      <div class="term-card" style="padding:24px 26px;margin-top:20px;">
+        <p style="color:var(--fog);font-size:15px;">Based in Dubai, UAE, and open to IT Support, Helpdesk (L1/L2), Systems Administration, and frontend developer roles. I bring a rare blend of strict infrastructure compliance and creative, client-ready web builds — from Active Directory troubleshooting to shipping responsive, production-ready interfaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">~/skills</span>
+    <h2>Core Skills Matrix</h2>
+    <p>Infrastructure fluency on one side, modern web craft on the other.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="term-card skill-panel reveal">
+      <h3>Systems &amp; Infrastructure</h3>
+      <span class="sub-lbl">~/skills/systems</span>
+      <ul class="skill-list">
+        <li><span class="ico">[&gt;]</span>Windows OS Troubleshooting</li>
+        <li><span class="ico">[&gt;]</span>Active Directory &amp; Group Policy</li>
+        <li><span class="ico">[&gt;]</span>TCP/IP &amp; DNS Diagnostics</li>
+        <li><span class="ico">[&gt;]</span>SLA Management</li>
+        <li><span class="ico">[&gt;]</span>Hardware &amp; Peripheral Diagnostics</li>
+        <li><span class="ico">[&gt;]</span>Salesforce CRM</li>
+      </ul>
+    </div>
+    <div class="term-card skill-panel reveal">
+      <h3>Web Development &amp; Tools</h3>
+      <span class="sub-lbl">~/skills/web</span>
+      <ul class="skill-list">
+        <li><span class="ico">[&gt;]</span>HTML5</li>
+        <li><span class="ico">[&gt;]</span>CSS3</li>
+        <li><span class="ico">[&gt;]</span>JavaScript (ES6+)</li>
+        <li><span class="ico">[&gt;]</span>Tailwind CSS</li>
+        <li><span class="ico">[&gt;]</span>React</li>
+        <li><span class="ico">[&gt;]</span>Git / GitHub</li>
+        <li><span class="ico">[&gt;]</span>AI-Assisted Development</li>
+        <li><span class="ico">[&gt;]</span>Responsive UI Design</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section id="portfolio" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">~/portfolio</span>
+    <h2>Featured Builds</h2>
+    <p>Live, production-ready frontend projects — designed and shipped end to end.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="term-card proj-card reveal">
+      <div class="proj-thumb dental"><span class="proj-glyph">RADIANT SMILE DENTAL</span></div>
+      <div class="proj-body">
+        <h3>Dental Clinic Landing Page</h3>
+        <p>A highly optimized, responsive medical landing page featuring an integrated scheduling UI and seamless WhatsApp contact integration for patient enquiries.</p>
+        <div class="tag-row">
+          <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">WhatsApp API</span>
+        </div>
+        <a href="https://dental-clinic-two-opal.vercel.app/" target="_blank" rel="noopener" class="proj-link">View live site →</a>
+      </div>
+    </div>
+    <div class="term-card proj-card reveal">
+      <div class="proj-thumb tech"><span class="proj-glyph">NEXUS TECH</span></div>
+      <div class="proj-body">
+        <h3>Tech Shop E-Commerce Platform</h3>
+        <p>A sleek, modern e-commerce interface built for high performance, featuring interactive product grids, smooth navigation, and a FastAPI-backed inventory system.</p>
+        <div class="tag-row">
+          <span class="tag">JavaScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Responsive UI</span>
+        </div>
+        <a href="https://tech-shop-dun.vercel.app/" target="_blank" rel="noopener" class="proj-link">View live site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">~/experience</span>
+    <h2>Professional Timeline</h2>
+    <p>Nearly four years of frontline, high-compliance IT operations.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="t-item">
+      <span class="t-date">SEPT 2022 — APR 2026</span>
+      <h3>IT Support Specialist &amp; Test Center Administrator</h3>
+      <span class="t-org">IIG Education Myanmar (Prometric-Authorised)</span>
+      <ul>
+        <li>Managed 50+ workstations across a Prometric-authorised exam centre.</li>
+        <li>Resolved network connectivity issues using command-line diagnostics.</li>
+        <li>Maintained zero-downtime exam environments under strict international regulatory compliance.</li>
+      </ul>
+    </div>
+    <div class="t-item">
+      <span class="t-date">IIG EDUCATION MYANMAR</span>
+      <h3>Candidate Care Agent</h3>
+      <span class="t-org">Multi-channel candidate support</span>
+      <ul>
+        <li>Managed high-volume queues via Salesforce CRM.</li>
+        <li>Resolved complex ticket histories under high-pressure operational workflows.</li>
+        <li>Maintained strict data-protection protocols across all candidate interactions.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section id="education" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">~/education</span>
+    <h2>Education &amp; Certifications</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="term-card edu-card reveal">
+      <span class="edu-tag">DIPLOMA</span>
+      <h3>NCC Education Level 4 Diploma in Computing &amp; Programming</h3>
+      <p>Foundational training in web development, programming logic, and computing systems.</p>
+    </div>
+    <div class="term-card edu-card reveal">
+      <span class="edu-tag">CERTIFICATION</span>
+      <h3>Prometric-Authorised Test Center Administrator</h3>
+      <p>Certified to administer secure, internationally regulated examination environments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="wrap">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">~/contact</span>
+      <h2>Let's build something reliable.</h2>
+      <p>Open to IT Support, Helpdesk, Systems Administration, and frontend developer roles in Dubai. Available for immediate joining.</p>
+      <div class="contact-list">
+        <a href="tel:+971503625711">
+          <span class="c-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          +971 50 362 5711
+        </a>
+        <a href="mailto:htetpyiephyohtut@gmail.com">
+          <span class="c-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6l-10 7L2 6" fill="none"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          </span>
+          htetpyiephyohtut@gmail.com
+        </a>
+        <div>
+          <span class="c-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          Dubai, UAE
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#94A3B8"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#94A3B8"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.61-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.34c.85 0 1.7.11 2.5.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form class="term-card reveal" id="contactForm">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-path">~/contact/new-message</span>
+      </div>
+      <div style="padding:24px 26px 6px;">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about the role or project..." required></textarea>
+        </div>
+        <button type="submit" class="cta-btn submit-btn">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>© 2026 Htet Pyie Phyo Htut. Built with vanilla HTML, CSS &amp; JavaScript.</p>
+  <span class="status-pill"><span class="pulse-dot"></span> System status: Online</span>
+</footer>
+
+<a href="https://wa.me/971503625711?text=Hi%20Htet%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20about%20an%20opportunity."
+   class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.9 9.9 0 0 0 4.91 1.3h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.13-2.9-7A9.83 9.83 0 0 0 12.04 2zm5.8 14.06c-.25.7-1.24 1.28-2.02 1.44-.55.11-1.26.2-3.66-.79-2.98-1.24-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.46.75-2.17 1.02-2.46.27-.3.58-.37.78-.37.2 0 .39 0 .56.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.48.13.66-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.94.29.15.48.22.55.34.07.13.07.75-.18 1.45z"/></svg>
+</a>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('mobile-open'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Hero terminal typewriter reveal (lines appear in sequence)
+  const monitorLines = document.querySelectorAll('#monitorBody .line');
+  const monitorObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        monitorLines.forEach((line, i) => {
+          setTimeout(() => line.classList.add('show'), i * 260);
+        });
+        monitorObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  if (monitorLines.length) {
+    monitorObserver.observe(document.getElementById('monitorBody'));
+  }
+
+  // Contact form (front-end demo — routes to email client)
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:htetpyiephyohtut@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
